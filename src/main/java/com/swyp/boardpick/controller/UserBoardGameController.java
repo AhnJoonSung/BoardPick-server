@@ -35,6 +35,8 @@ public class UserBoardGameController {
 //            URI uri = URI.create(Uri.HTTP_FOUND.getDescription());
 //            return ResponseEntity.status(HttpStatus.FOUND).location(uri).build();
 //        }
+        if (principal == null)
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         String userCode = principal.getName();
         User user = userRepository.findByCode(userCode)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with code: " + userCode));
