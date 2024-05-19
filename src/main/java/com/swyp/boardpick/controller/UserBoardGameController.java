@@ -52,7 +52,8 @@ public class UserBoardGameController {
 //            URI uri = URI.create(Uri.HTTP_FOUND.getDescription());
 //            return ResponseEntity.status(HttpStatus.FOUND).location(uri).build();
 //        }
-
+        if (principal == null)
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         Long id = userService.getUserId(principal.getName());
         return ResponseEntity
                 .ok(userService.getMyPickList(id));
