@@ -31,10 +31,10 @@ public class UserBoardGameController {
     @PostMapping("/{boardGameId}")
     public ResponseEntity<?> togglePick(@PathVariable Long boardGameId, @AuthenticationPrincipal CustomOAuth2User principal) {
 
-        if (principal == null) {
-            URI uri = URI.create(Uri.HTTP_FOUND.getDescription());
-            return ResponseEntity.status(HttpStatus.FOUND).location(uri).build();
-        }
+//        if (principal == null) {
+//            URI uri = URI.create(Uri.HTTP_FOUND.getDescription());
+//            return ResponseEntity.status(HttpStatus.FOUND).location(uri).build();
+//        }
         String userCode = principal.getName();
         User user = userRepository.findByCode(userCode)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with code: " + userCode));
@@ -48,10 +48,10 @@ public class UserBoardGameController {
     @GetMapping
     @ResponseBody
     public ResponseEntity<List<BoardGameDto>> getMyPickList(@AuthenticationPrincipal CustomOAuth2User principal) {
-        if (principal == null) {
-            URI uri = URI.create(Uri.HTTP_FOUND.getDescription());
-            return ResponseEntity.status(HttpStatus.FOUND).location(uri).build();
-        }
+//        if (principal == null) {
+//            URI uri = URI.create(Uri.HTTP_FOUND.getDescription());
+//            return ResponseEntity.status(HttpStatus.FOUND).location(uri).build();
+//        }
 
         Long id = userService.getUserId(principal.getName());
         return ResponseEntity

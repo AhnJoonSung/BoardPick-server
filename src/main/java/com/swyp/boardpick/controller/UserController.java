@@ -23,10 +23,10 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<UserDto> getMyInfo(@AuthenticationPrincipal CustomOAuth2User principal) {
-        if (principal == null) {
-            URI uri = URI.create(Uri.HTTP_FOUND.getDescription());
-            return ResponseEntity.status(HttpStatus.FOUND).location(uri).build();
-        }
+//        if (principal == null) {
+//            URI uri = URI.create(Uri.HTTP_FOUND.getDescription());
+//            return ResponseEntity.status(HttpStatus.FOUND).location(uri).build();
+//        }
 
         Long userId = userService.getUserId(principal.getName());
         UserDto userDto = userService.getMyInfo(userId);

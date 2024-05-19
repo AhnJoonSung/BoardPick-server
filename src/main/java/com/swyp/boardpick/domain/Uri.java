@@ -6,9 +6,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Getter
 public enum Uri {
+    FRONTEND("https://boardpick.netlify.app"),
     HTTP_FOUND("https://boardpick.netlify.app/onBoarding"),
     MAIN_PAGE("https://boardpick.netlify.app"),
-    LOGOUT_REDIR("http://ec2-13-124-98-35.ap-northeast-2.compute.amazonaws.com/logout");
+    LOGOUT_REDIR("https://boardpick-server.store/logout");
 
     private final String description;
 }
