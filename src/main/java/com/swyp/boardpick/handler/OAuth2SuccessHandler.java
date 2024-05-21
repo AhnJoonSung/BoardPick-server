@@ -28,13 +28,14 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
             Authentication authentication
     ) throws IOException, ServletException {
 
-        CustomOAuth2User oAuth2User = (CustomOAuth2User) authentication.getPrincipal();
-
-        String code = oAuth2User.getName();
-        String token = jwtProvider.create(code);
-
+//        CustomOAuth2User oAuth2User = (CustomOAuth2User) authentication.getPrincipal();
+//
+//        String code = oAuth2User.getName();
+//        String token = jwtProvider.create(code);
+//
+//        System.out.println("token = " + token);
 //        response.sendRedirect(frontBaseUrl + "/auth/oauth-response/" + token + "/3600");
-//        response.sendRedirect(frontBaseUrl);
-        response.sendRedirect("http://localhost:3000");
+        response.sendRedirect(frontBaseUrl);
+//        response.sendRedirect("http://localhost:8080");
     }
 }

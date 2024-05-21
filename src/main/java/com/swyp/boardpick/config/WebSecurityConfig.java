@@ -52,7 +52,8 @@ public class WebSecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 )
                 .authorizeHttpRequests(request -> request
-//                        .requestMatchers("/api/pick/**").authenticated()
+                        .requestMatchers("/api/pick/**").authenticated()
+                        .requestMatchers("/api/user/**").authenticated()
                         .requestMatchers("/user/**").hasRole("USER")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().permitAll()
@@ -65,7 +66,7 @@ public class WebSecurityConfig {
                 .exceptionHandling(exceptionHandling -> exceptionHandling
                         .authenticationEntryPoint(new FailedAuthenticationEntryPoint())
                 )
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+//                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl(Uri.MAIN_PAGE.getDescription())
@@ -86,8 +87,10 @@ public class WebSecurityConfig {
         corsConfiguration.setAllowCredentials(true);
         corsConfiguration.addAllowedMethod("*");
         corsConfiguration.addAllowedHeader("*");
-        corsConfiguration.addExposedHeader("Authorization");
-        corsConfiguration.addExposedHeader("Content-Type");
+//        corsConfiguration.addExposedHeader("Authorization");
+//        corsConfiguration.addExposedHeader("Content-Type");
+//        corsConfiguration.addAllowedHeader("Authorization");
+//        corsConfiguration.addAllowedHeader("Content-Type");
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
