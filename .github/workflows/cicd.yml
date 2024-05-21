@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - fix-cors-configs
+      - test
   pull_request:
     branches:
       - main
