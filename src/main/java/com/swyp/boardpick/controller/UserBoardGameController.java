@@ -52,7 +52,8 @@ public class UserBoardGameController {
         if (principal == null) {
 //            URI uri = URI.create(Uri.LOGIN_PAGE.getDescription());
 //            return ResponseEntity.status(HttpStatus.FOUND).location(uri).build();
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            return ResponseEntity.status(HttpStatus.OK).build();
         }
 
         Long id = userService.getUserId(principal.getName());
