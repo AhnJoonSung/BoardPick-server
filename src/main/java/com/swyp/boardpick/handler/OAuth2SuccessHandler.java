@@ -35,7 +35,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 //
 //        System.out.println("token = " + token);
 //        response.sendRedirect(frontBaseUrl + "/auth/oauth-response/" + token + "/3600");
-        response.sendRedirect(frontBaseUrl);
-//        response.sendRedirect("http://localhost:8080");
+//        response.sendRedirect(frontBaseUrl);
+        response.sendRedirect("http://localhost:8080");
     }
 }
