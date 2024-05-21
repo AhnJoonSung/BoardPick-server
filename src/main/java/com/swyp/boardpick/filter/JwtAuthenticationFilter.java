@@ -37,12 +37,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         try {
 
             String token = parseBearerToken(request);
+            System.out.println("token = " + token);
             if (token == null) {
                 filterChain.doFilter(request, response);
                 return;
             }
 
             String code = jwtProvider.validate(token);
+            System.out.println("code = " + code);
             if (code == null) {
                 filterChain.doFilter(request, response);
                 return;

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.util.List;
 import java.util.Map;
+import org.springframework.security.core.Authentication;
 
 @RestController
 @RequestMapping("/api/pick")
@@ -29,12 +30,13 @@ public class UserBoardGameController {
     private final UserRepository userRepository;
 
     @PostMapping("/{boardGameId}")
-    public ResponseEntity<?> togglePick(@PathVariable("boardGameId") Long boardGameId, @AuthenticationPrincipal CustomOAuth2User principal) {
-
+//    public ResponseEntity<?> togglePick(@PathVariable("boardGameId") Long boardGameId, @AuthenticationPrincipal CustomOAuth2User principal) {
+    public ResponseEntity<?> togglePick(@PathVariable("boardGameId") Long boardGameId, Authentication principal) {
+        System.out.println("principal = " + principal.getName());
         if (principal == null) {
 //            URI uri = URI.create(Uri.LOGIN_PAGE.getDescription());
 //            return ResponseEntity.status(HttpStatus.FOUND).location(uri).build();
-//            System.out.println("principal is null");
+            System.out.println("principal is null");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 
         }
